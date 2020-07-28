@@ -2,25 +2,6 @@ import * as React from 'react';
 import { LocationState } from './AppState';
 import { TimeTrackingStore } from './TimeTrackingStore';
 import { TimerStore } from './TimerState';
-
-export const AppContext = React.createContext({})
-export const consumeStore = consume(AppContext.Consumer)
-
-export type AppContextProps = {
-  timeTrackingStore?: TimeTrackingStore,
-  locationState?: LocationState,
-  timerStore?: TimerStore
-}
-
-export class Provider extends React.Component<AppContextProps> {
-  render () {
-    const state = {...this.props}
-    return (
-      <AppContext.Provider value={{ ...state }}>
-        {this.props.children}
-      </AppContext.Provider>
-    )
-  }
 }
 
 export function consume<ContextProps> (Consumer: React.Consumer<ContextProps>) {
